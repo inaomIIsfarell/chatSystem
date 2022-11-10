@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dialogue</title>
+</head>
+<body>
+    <form method="post" action="/dialogue/">
+        {% csrf_token %}
+
+        <input type="text" name="user_input">
+        <input type="submit" value="发送">
+        <a href="#" id="reset">reset</a>
+    </form>
+</body>
+</html>

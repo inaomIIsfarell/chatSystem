@@ -18,7 +18,6 @@ from django.urls import path
 from generation import views
 
 urlpatterns = [
-     path('/', views.index()),
-
-
+     path('', views.index),
+     path('dialogue/', views.dialogue)
 ]
