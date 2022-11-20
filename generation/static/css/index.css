@@ -1,0 +1,59 @@
+
+html,body,div{
+    height:100%;
+    box-sizing:border-box;
+    padding: 0;
+    margin: 0;
+}
+#app{
+    background-color: rgba(217, 239, 251, 0.31);
+    border-radius: 10px;
+    height: 99%;
+    width: 99%;
+    margin-left: 0.5%;
+    border: 1px solid #40a0ff26;
+}
+
+.el-input{
+    display: contents;
+}
+.el-input__inner{
+    width: 90%;
+    margin: 20px;
+}
+.el-form{
+    position: absolute;
+    bottom: 0;
+    width: 98%;
+    background-color: #F3FAFE;
+    left: 50%;
+    transform: translate(-50%,-20%);
+    border: 1px solid #40a0ff26;
+}
+
+.chat-left{
+    float: left;
+    display: table;
+    margin: 0 20px;
+    height: auto;
+}
+.chat-right{
+    float: right;
+    display: table;
+    margin: 0 20px;
+    height: auto;
+}
+.Bubble{
+    display: table-cell;
+    margin: 0 10px;
+}
+
+.Bubble p{
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #40a0ff26;
+    border-radius: 2px;
+}
+.el-avatar{
+    transform: translate(25%,25%);
+}
