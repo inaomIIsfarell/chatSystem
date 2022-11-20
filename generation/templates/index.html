@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>dialogue</title>
 </head>
-    <script src="../static/js/vue.js"></script>
-    <script src="../static/js/element-ui.js"></script>
-    <link rel="stylesheet" href="../static/css/element.css">
-    <link rel="stylesheet" href="../static/css//index.css">
+<script src="../static/js/vue.js"></script>
+<script src="../static/js/element-ui.js"></script>
+<link rel="stylesheet" href="../static/css/element.css">
+<link rel="stylesheet" href="../static/css//index.css">
 
 <body>
     <div id="app">
         <div class="chat-left">
             <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-            <div class="Bubble"><p>您好，请问有什么可以帮助您的？</p></div>
+            <div class="Bubble">
+                <p>您好，请问有什么可以帮助您的？</p>
+            </div>
         </div>
         <div class="chat-right">
-            <div class="Bubble"><p>
-                淳正家风，家国兴盛。中华民族素有重家庭、讲家教、守家风的优良传统，在历史的长河中积淀发展为一种浓郁醇厚的家风文化。习近平总书记强调，“不论时代发生多大变化，不论生活格局发生多大变化，我们都要重视家庭建设，注重家庭、注重家教、注重家风。”而对于党员干部的家风建设，他则更为明确地指出“党员干部，特别是领导干部，要清白做人、勤俭齐家、干净做事、廉洁从政，管好自己和家人，涵养新时代共产党人的良好家风。”汲取传统家风文化的优秀因子，树立清正家风，这是党员干部作为中华优秀传统文化传承者的使命，也是严明私德、强化作风建设的重要抓手。
+            <div class="Bubble">
+                <p>
+                    淳正家风，家国兴盛。中华民族素有重家庭、讲家教、守家风的优良传统，在历史的长河中积淀发展为一种浓郁醇厚的家风文化。习近平总书记强调，“不论时代发生多大变化，不论生活格局发生多大变化，我们都要重视家庭建设，注重家庭、注重家教、注重家风。”而对于党员干部的家风建设，他则更为明确地指出“党员干部，特别是领导干部，要清白做人、勤俭齐家、干净做事、廉洁从政，管好自己和家人，涵养新时代共产党人的良好家风。”汲取传统家风文化的优秀因子，树立清正家风，这是党员干部作为中华优秀传统文化传承者的使命，也是严明私德、强化作风建设的重要抓手。
 
-　　强化家风建设要传承传统家风文化基因。《孟子》云：“天下之本在国，国之本在家，家之本在身。”家庭是社会的基本细胞，是人生的第一所学校，不仅承担着“整齐门内、提撕子孙”的重担，更担负着塑造德性人格、孕育家国情怀、培育文明风尚的重任。家风是一个家庭的精神内核，蕴含着一个家庭或家族世代相传的价值和处世原则。孔门庭训、孟母三迁、诸葛教子、岳母刺字等脍炙人口的家教故事，其所蕴含的诗书传家、教子义方、俭以养德、精忠报国的教化思想和道德理念，无一不是中华根、民族魂的生动体现。南朝人徐勉身居吏部尚书、中书令等要职，不营产业，家无蓄积，还常将自己的俸禄分给亲戚中的穷乏者。门生故旧劝他为自己和儿孙留点财富，他说：“人遗子孙以财，我遗之以清白。”徐勉的高风亮节为世人称道，“遗清白于子孙”也成为历代清吏恪守的千古明训。凡此优秀家风无不凝结着历代贤哲修齐治平的精神追求和宝贵的治家经验，这是今天党员干部学习成长的精神滋养，也是建设清正廉俭家风的文化底气。
+                    　　强化家风建设要传承传统家风文化基因。《孟子》云：“天下之本在国，国之本在家，家之本在身。”家庭是社会的基本细胞，是人生的第一所学校，不仅承担着“整齐门内、提撕子孙”的重担，更担负着塑造德性人格、孕育家国情怀、培育文明风尚的重任。家风是一个家庭的精神内核，蕴含着一个家庭或家族世代相传的价值和处世原则。孔门庭训、孟母三迁、诸葛教子、岳母刺字等脍炙人口的家教故事，其所蕴含的诗书传家、教子义方、俭以养德、精忠报国的教化思想和道德理念，无一不是中华根、民族魂的生动体现。南朝人徐勉身居吏部尚书、中书令等要职，不营产业，家无蓄积，还常将自己的俸禄分给亲戚中的穷乏者。门生故旧劝他为自己和儿孙留点财富，他说：“人遗子孙以财，我遗之以清白。”徐勉的高风亮节为世人称道，“遗清白于子孙”也成为历代清吏恪守的千古明训。凡此优秀家风无不凝结着历代贤哲修齐治平的精神追求和宝贵的治家经验，这是今天党员干部学习成长的精神滋养，也是建设清正廉俭家风的文化底气。
                 </p>
             </div>
             <el-avatar>user</el-avatar>
         </div>
         <el-form status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm" method="post" action="/dialogue/">
+            {% csrf_token %}
             <el-input v-model="pass" autocomplete="off" type="text" name="user_input"></el-input>
-            <el-button type="submit" value="发送">发送</el-button>
+            <el-button type="submit" value="发送" @click="submit">发送</el-button>
+            <input type="submit" value="发送" ref="submit"
+                style="transform: translate(-200%);padding:0 200px;display: contents;">
         </el-form>
         <!-- <form method="post" action="/dialogue/">
             {% csrf_token %}
@@ -38,12 +45,18 @@
 
 </body>
 <script>
-new Vue({
-    el:"#app",
-    data:{
-        pass:'',
-    },
+    new Vue({
+        el: "#app",
+        data: {
+            pass: '',
+        },
+        methods: {
+            submit() {
+                this.$refs.submit.click();
+            }
+        }
 
-});
+    });
 </script>
+
 </html>
