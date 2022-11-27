@@ -1,11 +1,13 @@
-
-html,body,div{
-    height:100%;
-    box-sizing:border-box;
+html,
+body,
+div {
+    height: 100%;
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
 }
-#app{
+
+#app {
     background-color: rgba(217, 239, 251, 0.31);
     border-radius: 10px;
     height: 99%;
@@ -14,46 +16,65 @@ html,body,div{
     border: 1px solid #40a0ff26;
 }
 
-.el-input{
+#text {
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 85%;
+}
+
+.el-input {
     display: contents;
 }
-.el-input__inner{
+
+.el-input__inner {
     width: 90%;
     margin: 20px;
 }
-.el-form{
+
+.el-form {
     position: absolute;
     bottom: 0;
     width: 98%;
     background-color: #F3FAFE;
     left: 50%;
-    transform: translate(-50%,-20%);
+    transform: translate(-50%, -1%);
     border: 1px solid #40a0ff26;
 }
 
-.chat-left{
+.chat-left {
     float: left;
     display: table;
     margin: 0 20px;
     height: auto;
 }
-.chat-right{
+
+.chat-right {
     float: right;
     display: table;
     margin: 0 20px;
     height: auto;
 }
-.Bubble{
+
+.Bubble {
     display: table-cell;
     margin: 0 10px;
+    width: 100%;
+    text-align: right;
 }
 
-.Bubble p{
+.Bubble p {
     padding: 10px;
     background-color: white;
     border: 1px solid #40a0ff26;
     border-radius: 2px;
+    display: inherit;
 }
-.el-avatar{
-    transform: translate(25%,25%);
+
+.chat-right .Bubble p {
+    display: inline-table;
+    text-align: left;
+}
+
+.el-avatar {
+    transform: translate(0%, 25%);
 }
