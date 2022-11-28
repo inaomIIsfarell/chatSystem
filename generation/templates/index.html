@@ -34,8 +34,8 @@
             {% csrf_token %}
             <el-input v-model="pass" autocomplete="off" type="text" name="user_input"></el-input>
             <el-button type="submit" value="发送" @click="submit">发送</el-button>
-            <input type="submit" value="发送" ref="submit"
-                style="transform: translate(-200%);padding:0 200px;display: contents;">
+            <!-- <input type="submit" value="发送" ref="submit"
+                style="transform: translate(-200%);padding:0 200px;display: contents;"> -->
         </el-form>
         <!-- <form method="post" action="/dialogue/">
             {% csrf_token %}
@@ -63,8 +63,7 @@
 
                 let answer = document.createElement('div')
                 answer.className = "chat-left"
-                answer.innerHTML = '<span class="el-avatar el-avatar--circle"><img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="object-fit: cover;"></span><div class="Bubble"><p>'
-                answer.innerHTML += this.answerText + '</p></div>'
+                answer.innerHTML = '<span class="el-avatar el-avatar--circle"><img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="object-fit: cover;"></span><div class="Bubble"><p>' + this.answerText + '</p></div>'
                 this.$refs.text.appendChild(answer)
                 axios.get('/func/', {
                     params: {
@@ -74,8 +73,7 @@
                     .then(function (response) {
                         console.log(response.data.output);
                         this.answerText = response.data.output
-                        answer.innerHTML = '<span class="el-avatar el-avatar--circle"><img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="object-fit: cover;"></span><div class="Bubble"><p>'
-                        answer.innerHTML += this.answerText + '</p></div>'
+                        answer.innerHTML = '<span class="el-avatar el-avatar--circle"><img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="object-fit: cover;"></span><div class="Bubble"><p>' + this.answerText + '</p></div>'
                     })
                     .catch(function (error) {
                         console.log(error);
