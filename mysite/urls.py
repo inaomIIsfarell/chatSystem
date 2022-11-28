@@ -19,7 +19,6 @@ from generation import views
 
 urlpatterns = [
      path('', views.index),
-     path('dialogue/', views.dialogue),
      path('func/', views.func)
 
 ]

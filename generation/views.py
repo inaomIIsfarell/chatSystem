@@ -1,7 +1,11 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import HttpResponse, render
 from .model.generate import interaction
 from .model.args import parse_args
 import json
+
+args = parse_args()
+global predictor
+predictor = interaction(args)
 
 
 # Create your views here.
@@ -12,56 +16,32 @@ def index(request):
         return HttpResponse("Error")
 
 
-def dialogue(request):
-    print(request)
-    if request.method == 'GET':
-        return render(request, "index.html")
-    else:
-        args = parse_args()
-        predictor = interaction(args)
-        user_input = request.POST.get("user_input")
-        print("user_input:", user_input)
-        predict = predictor.infer(user_input)
-        print("bot:", predict)
-        data = {
-            'sender' : 'transformer',
-            'input' : user_input,
-            'output' : predict
-        }
-        return HttpResponse(json.dumps(data), content_type='application/json')
-
-    # args = parse_args()
-    # predictor = interaction(args)
-    # user_input = request.POST.get("user_input")
-    # bot_response = predictor.infer(user_input)
-    # return HttpResponse(bot_response)
-
 def func(request):
     print(request)
     if request.method == 'GET':
         user_input = request.GET.get('user_input')
-        args = parse_args()
-        predictor = interaction(args)
+        # args = parse_args()
+        # predictor = interaction(args)
         print("user_input:", user_input)
         predict = predictor.infer(user_input)
         print("bot:", predict)
         data = {
-            'sender' : 'transformer',
-            'input' : user_input,
-            'output' : predict
+            'sender': 'transformer',
+            'input': user_input,
+            'output': predict
         }
         return HttpResponse(json.dumps(data), content_type='application/json')
     else:
-        args = parse_args()
-        predictor = interaction(args)
+        # args = parse_args()
+        # predictor = interaction(args)
         user_input = request.POST.get("user_input")
         print("user_input:", user_input)
         predict = predictor.infer(user_input)
         print("bot:", predict)
         data = {
-            'sender' : 'transformer',
-            'input' : user_input,
-            'output' : predict
+            'sender': 'transformer',
+            'input': user_input,
+            'output': predict
         }
         return HttpResponse(json.dumps(data), content_type='application/json')
     # return param
