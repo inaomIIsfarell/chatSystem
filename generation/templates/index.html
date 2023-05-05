@@ -9,7 +9,8 @@
 <script src="../static/js/element-ui.js"></script>
 <script src="../static/js/axios.js"></script>
 <link rel="stylesheet" href="../static/css/element.css">
-<link rel="stylesheet" href="../static/css//index.css">
+<link rel="stylesheet" href="../static/css/index.css">
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <body>
     <div id="app">
@@ -20,19 +21,20 @@
                     <p>您好，请问有什么可以帮助您的？</p>
                 </div>
             </div>
+
             <!-- <div class="chat-right">
                 <div class="Bubble">
                     <p v-loading="loading">___</p>
-                    {#                <p>#}
-    {#                    {{ data.input }}#}
-    {#                </p>#}
+                                    <p>
+                        {{ data.input }}
+                    </p>
                 </div>
                 <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
             </div> -->
         </div>
-        <el-form status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm" method="post">
+        <el-form status-icon ref="ruleForm" label-width="100px" class="demo-ruleForm" method="post" @submit.native.prevent>
             {% csrf_token %}
-            <el-input v-model="pass" autocomplete="off" type="text" name="user_input"></el-input>
+            <el-input v-model="pass" autocomplete="off" type="text" name="user_input" @keyup.enter.native="submit"></el-input>
             <el-button type="submit" value="发送" @click="submit">发送</el-button>
             <!-- <input type="submit" value="发送" ref="submit"
                 style="transform: translate(-200%);padding:0 200px;display: contents;"> -->
@@ -52,13 +54,15 @@
         data: {
             pass: '',
             answerText: '加载中...',
-            loading: true
+            loading: true,
         },
         methods: {
             submit() {
+                let user_input = this.pass
+                this.pass = ''
                 let div = document.createElement('div')
                 div.className = "chat-right"
-                div.innerHTML = '<div class="Bubble"><p>' + this.pass + '</p></div><span class="el-avatar el-avatar--circle"><img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="object-fit: cover;"></span>'
+                div.innerHTML = '<div class="Bubble"><p>' + user_input + '</p></div><span class="el-avatar el-avatar--circle"><img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="object-fit: cover;"></span>'
                 this.$refs.text.appendChild(div)
 
                 let answer = document.createElement('div')
@@ -67,21 +71,22 @@
                 this.$refs.text.appendChild(answer)
                 axios.get('/func/', {
                     params: {
-                        user_input: this.pass
+                        user_input: user_input
                     }
                 })
-                    .then(function (response) {
-                        console.log(response.data.output);
-                        this.answerText = response.data.output
-                        answer.innerHTML = '<span class="el-avatar el-avatar--circle"><img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="object-fit: cover;"></span><div class="Bubble"><p>' + this.answerText + '</p></div>'
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
+                .then(function (response) {
+                    {#console.log("响应了")#}
+                    console.log(response.data.output);
+                    this.answerText = response.data.output
+                    answer.innerHTML = '<span class="el-avatar el-avatar--circle"><img src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png" style="object-fit: cover;"></span><div class="Bubble"><p>' + this.answerText + '</p></div>'
+                    {#answer.innerHTML = marked.parse(markdown)#}
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
                 // this.$refs.submit.click();
             }
         }
-
     });
 </script>
 

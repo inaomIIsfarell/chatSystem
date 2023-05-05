@@ -3,9 +3,8 @@ from .model.generate import interaction
 from .model.args import parse_args
 import json
 
-args = parse_args()
 global predictor
-predictor = interaction(args)
+predictor = interaction()
 
 
 # Create your views here.
